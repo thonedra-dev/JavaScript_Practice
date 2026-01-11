@@ -1,0 +1,8 @@
+One   : I have coded storage.js and state.js which are actually at the very end of the entire process. 
+Two   : In storage.js, I have coded functions only about saving and loading tasks as, I want to test only to add a task and fetching it automatically.
+Three : In taskService.js also, only cares about creating a task and saving it towards ==> state.js ==> storage.js to browser_storage.
+Four  : So, my ui.js can access the tasks directly from state object as I am not aiming any filteration yet.
+Five  : So, my index.html is only using the temporary div [  <div class="task-list-section"> ] for displaying the fetched tasks very straight-forwardly.
+Six   : Yep, my app.js is also only having the adding task towards taskService.js only
+
+! Need to modify app.js and ui.js alot add more on taskService.js for further development of the program.
