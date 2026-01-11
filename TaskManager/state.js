@@ -7,14 +7,15 @@ const state = {
      
 
     // Constant Property Functions
+    // Both methods are calling the functions from storage object (storage.js).
 
     init: function()
     {
-        this.tasks = storage.loadTasks();
+        this.tasks = storage.loadTasks();      // Data Flow state.js <===== storage.js
     },
 
     save: function()
     {
-        storage.saveTasks(this.tasks);
+        storage.saveTasks(this.tasks);         // Data Flow state.js =====> storage.js
     },
 };
