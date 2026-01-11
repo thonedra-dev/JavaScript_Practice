@@ -6,4 +6,15 @@ const state = {
     editing_id:       null,      // null still
      
 
-}
+    // Constant Property Functions
+
+    init: function()
+    {
+        this.tasks = storage.loadTasks();
+    },
+
+    save: function()
+    {
+        storage.saveTasks(this.tasks);
+    },
+};
