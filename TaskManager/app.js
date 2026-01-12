@@ -5,33 +5,34 @@
 
 const app = {
   // Initialize the application
-  init: function() 
-  {
-    
+  init: function() {
+    // Initialize state from storage
     state.init();
-    this.setupEventListeners();
-    ui.render();
-
-  },
-
-  
-  setupEventListeners: function() 
-  {
     
-document.getElementById('addTaskBtn').addEventListener('click', () => {this.handleAddTask();  } );
-  
-document.getElementById('newTaskTitle').addEventListener('keypress', (e) => {if (e.key === 'Enter') { this.handleAddTask(); } });
-      
-document.getElementById('statusFilter').addEventListener('change', (e) => {state.status_filter = e.target.value; ui.render(); });
-     
-document.getElementById('priorityFilter').addEventListener('change', (e) => {state.priority_filter = e.target.value; ui.render(); });
-
-document.getElementById('searchInput').addEventListener('input', (e) => {state.search_query = e.target.value; ui.render(); });
+    // Setup event listeners
+    this.setupEventListeners();
+    
+    // Initial render
+    ui.renderTasks();
   },
 
-  
-  handleAddTask: function() 
-  {
+  // Setup event listeners
+  setupEventListeners: function() {
+    // Add task button
+    document.getElementById('addTaskBtn').addEventListener('click', () => {
+      this.handleAddTask();
+    });
+    
+    // Enter key on new task input
+    document.getElementById('newTaskTitle').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        this.handleAddTask();
+      }
+    });
+  },
+
+  // Handle add task
+  handleAddTask: function() {
     const titleInput = document.getElementById('newTaskTitle');
     const prioritySelect = document.getElementById('newTaskPriority');
     
