@@ -22,7 +22,7 @@ const taskService =
               }; 
     },
 
-    getting_filterTask: function()
+    getFilteredTasks: function()
     {
         let current_filter = state.tasks;
 
