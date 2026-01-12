@@ -5,34 +5,33 @@
 
 const app = {
   // Initialize the application
-  init: function() {
-    // Initialize state from storage
+  init: function() 
+  {
+    
     state.init();
-    
-    // Setup event listeners
     this.setupEventListeners();
-    
-    // Initial render
-    ui.renderTasks();
+    ui.render();
+
   },
 
-  // Setup event listeners
-  setupEventListeners: function() {
-    // Add task button
-    document.getElementById('addTaskBtn').addEventListener('click', () => {
-      this.handleAddTask();
-    });
+  
+  setupEventListeners: function() 
+  {
     
-    // Enter key on new task input
-    document.getElementById('newTaskTitle').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        this.handleAddTask();
-      }
-    });
+document.getElementById('addTaskBtn').addEventListener('click', () => {this.handleAddTask();  } );
+  
+document.getElementById('newTaskTitle').addEventListener('keypress', (e) => {if (e.key === 'Enter') { this.handleAddTask(); } });
+      
+document.getElementById('statusFilter').addEventListener('change', (e) => {state.status_filter = e.target.value; ui.render(); });
+     
+document.getElementById('priorityFilter').addEventListener('change', (e) => {state.priority_filter = e.target.value; ui.render(); });
+
+document.getElementById('searchInput').addEventListener('input', (e) => {state.search_query = e.target.value; ui.render(); });
   },
 
-  // Handle add task
-  handleAddTask: function() {
+  
+  handleAddTask: function() 
+  {
     const titleInput = document.getElementById('newTaskTitle');
     const prioritySelect = document.getElementById('newTaskPriority');
     
