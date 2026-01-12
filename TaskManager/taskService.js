@@ -39,5 +39,15 @@ const taskService =
         return current_filter;
     },
 
-    
+    getStats: function() 
+     {
+             return {
+                  total: state.tasks.length,
+                  pending: state.tasks.filter(t => t.status === 'pending').length,
+                  completed: state.tasks.filter(t => t.status === 'completed').length,
+                  high: state.tasks.filter(t => t.priority === 'high').length,
+                  medium: state.tasks.filter(t => t.priority === 'medium').length,
+                  low: state.tasks.filter(t => t.priority === 'low').length  };
+     }
+
 }
