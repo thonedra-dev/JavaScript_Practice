@@ -21,5 +21,23 @@ const taskService =
             updatedAt: utils.getCurrentTimestamp()
               }; 
     },
+
+    getting_filterTask: function()
+    {
+        let current_filter = state.tasks;
+
+        if(state.status_filter !== 'all'){ 
+            current_filter = current_filter.filter(task => task.status === state.status_filter); }
+
+        if(state.priority_filter !== 'all'){
+            current_filter = current_filter.filter(task=> task.priority === state.priority_filter); }
+
+        if(state.search_query.trim() !== ''){
+            const query = state.search_query.toLowerCase();
+            current_filter = current_filter.filter(task => task.title.toLowerCase().includes(query) ); }
+
+        return current_filter;
+    },
+
     
 }
