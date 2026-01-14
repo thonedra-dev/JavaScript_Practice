@@ -59,11 +59,14 @@ const ui =
         task_container.innerHTML = current_tasks.map(task => `
     <div class="task-item ${task.status === 'completed' ? 'completed' : ''}">
         <div class="task-content">
+          
+          <input type="checkbox" class="task-checkbox" ${task.status === 'completed' ? 'checked' : ''}
+          onchange="app.handleToggleStatus('${task.id}')"  >     
 
+      
           <div class="task-details">
-
            <div class="task-title ${task.status === 'completed' ? 'completed' : ''}">
-                     ${task.title}
+                  ${task.title}
            </div>
         
            <div class="task-meta">
@@ -79,7 +82,6 @@ const ui =
                   Created: ${utils.formatDate(task.createdAt)}
              </span>
            </div>
-           
          </div>
 
     </div>
