@@ -4,7 +4,7 @@ const taskService =
     {                                                                //In here, we have to understand that, 
         if (title.trim() === '') { return false; }                   //We could just call the state.save(new_task),
         const new_task = this.createTask(title, priority);           //But state.tasks, that state will be empty even,
-        state.tasks.push(new_task);                                  //a new task entered the localStoage, because, state()
+        state.tasks.push(new_task);                                  //a new task entered the localStoage, because, save()
         state.save();  return true;                                  //only calls the storage.init() to save it but nothing is
     },                                                               //updating the state.tasks, which will be used later for many references
 
@@ -62,6 +62,24 @@ const taskService =
                   high: state.tasks.filter(t => t.priority === 'high').length,
                   medium: state.tasks.filter(t => t.priority === 'medium').length,
                   low: state.tasks.filter(t => t.priority === 'low').length  };
+     },
+
+    
+     updateTask: function(id_from_app_js, updates) 
+     {
+        const searching_id = state.tasks.findIndex(task=> task.id === id_from_app_js);
+        if (searching_id === -1) { return false; }
+
+        state.tasks[searching_id] = {
+            ...state.tasks[searching_id],
+            ...updates,
+            updatedAt: utils.getCurrentTimestamp()
+        };
+
+        state.save();
+        return true;
+
      }
+
 
 }
