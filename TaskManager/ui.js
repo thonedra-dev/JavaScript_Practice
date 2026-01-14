@@ -56,42 +56,69 @@ const ui =
                            `;
         return; }
 
-        task_container.innerHTML = current_tasks.map(task => `
-    <div class="task-item ${task.status === 'completed' ? 'completed' : ''}">
-        <div class="task-content">
+        task_container.innerHTML = current_tasks.map(task => {
+          const isEditing = state.editingTaskId === task.id;
+
+          return `
+          <div class="task-item ${task.status === 'completed' ? 'completed' : ''}">
+              <div class="task-content">
           
-          <input type="checkbox" class="task-checkbox" ${task.status === 'completed' ? 'checked' : ''}
-          onchange="app.handleToggleStatus('${task.id}')"  >     
+                <input type="checkbox" class="task-checkbox" ${task.status === 'completed' ? 'checked' : ''}
+                     onchange="app.handleToggleStatus('${task.id}')"  >     
 
       
-          <div class="task-details">
-           <div class="task-title ${task.status === 'completed' ? 'completed' : ''}">
-                  ${task.title}
-           </div>
+                <div class="task-details">
+                  ${
+                    isEditing ? `
+                   <input type="text" class="task-title-input" id="edit-input-${task.id}" value="${task.title}"/>
+                     ` : `
+                   <div class="task-title ${task.status === 'completed' ? 'completed' : ''}">
+                          ${task.title}
+                   </div>  `
+                  }
         
-           <div class="task-meta">
-              <select class="priority-select priority-${task.priority}"
-                  onchange="app.handlePriorityChange('${task.id}', this.value)">
+                   <div class="task-meta">
+                      <select class="priority-select priority-${task.priority}"
+                            onchange="app.handlePriorityChange('${task.id}', this.value)">
 
-                  <option value="low" ${task.priority === 'low' ? 'selected' : ''}>Low</option>
-                  <option value="medium" ${task.priority === 'medium' ? 'selected' : ''}>Medium</option>
-                  <option value="high" ${task.priority === 'high' ? 'selected' : ''}>High</option>
+                         <option value="low" ${task.priority === 'low' ? 'selected' : ''}>Low</option>
+                         <option value="medium" ${task.priority === 'medium' ? 'selected' : ''}>Medium</option>
+                         <option value="high" ${task.priority === 'high' ? 'selected' : ''}>High</option>
 
-              </select>
+                      </select>
           
-              <span class="status-badge status-${task.status}">
-                  ${task.status}
-              </span>
+                      <span class="status-badge status-${task.status}">
+                          ${task.status}
+                      </span>
           
-             <span class="task-date">
-                  Created: ${utils.formatDate(task.createdAt)}
-             </span>
-           </div>
-         </div>
+                      <span class="task-date">
+                           Created: ${utils.formatDate(task.createdAt)}
+                      </span>
+                   </div>
+                </div>
 
-    </div>
-  </div>
-`).join('');
+                <div class="task-actions">
+                ${isEditing ? `
+                  <button class="btn-save" onclick="app.handleSaveEdit('${task.id}')">
+                    Save
+                  </button>
+                  <button class="btn-cancel" onclick="app.handleCancelEdit()">
+                    Cancel
+                  </button>
+                ` : `
+                  <button class="btn-edit" onclick="app.handleStartEdit('${task.id}')">
+                    Edit
+                  </button>
+                  <button class="btn-delete" onclick="app.handleDeleteTask('${task.id}')">
+                    Delete
+                  </button>
+                `}
+                </div>
+
+              </div>
+          </div>
+`;
+    }).join('');
                       
     },
 
