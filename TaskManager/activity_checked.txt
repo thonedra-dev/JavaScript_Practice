@@ -19,3 +19,18 @@ calls the function from taskSerivce very directly.
 But, when we want to fetch something, such as searching, filtering based on [ status, priority ], yep, app.js 
 still gets the id, but, update the state very immediately and calls the ui.render() which will call the function 
 from filtering_task() again and that is how the program is being circled.
+
+
+Things must learn before the REACT framework
+
+- ES6 Modules (import/export) - React uses this exclusively
+
+- Promises & Async/Await - API calls in React
+
+- Array Methods especially reduce() - Redux/state management
+
+- Destructuring - heavily used in React props/state
+
+- Spread/Rest operators - React state updates
+
+- Event delegation - React's synthetic event system understanding
