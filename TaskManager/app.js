@@ -81,19 +81,26 @@ document.getElementById('searchInput').addEventListener('input', (e) => {state.s
   },
 
   
-  handleSaveEdit: function(taskId) 
+  handleSaveEdit: function(id_from_ui_js) 
   {
-    const input = document.getElementById(`edit-input-${taskId}`);
+    const input = document.getElementById(`edit-input-${id_from_ui_js}`);
     const newTitle = input.value.trim();
     
     if (newTitle === '') { alert('Task title cannot be empty'); return; }
     
-    taskService.updateTask(taskId, { title: newTitle });
-    
+    taskService.updateTask(id_from_ui_js, { title: newTitle });
+
     state.editingTaskId = null;
     ui.render();
   },
 
+  handleDeleteTask: function(id_from_ui_js) 
+  {
+    const confirmed = confirm('Are you sure you want to delete this task?');
+    
+    if (confirmed) { taskService.deleteTask(id_from_ui_js); ui.render(); }
+
+  }
 
 };
 
