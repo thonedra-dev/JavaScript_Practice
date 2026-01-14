@@ -60,7 +60,39 @@ document.getElementById('searchInput').addEventListener('input', (e) => {state.s
   {
     taskService.updateTask(id_from_ui_js, { priority: newPriority }); 
     ui.render();
-  }
+  },
+
+  handleStartEdit: function(id_from_ui_js) 
+   {
+    state.editingTaskId = id_from_ui_js; ui.render();
+    
+    // Focus on the input after render
+    setTimeout(() => {
+      const input = document.getElementById(`edit-input-${id_from_ui_js}`);
+      if (input) { input.focus(); input.select(); }
+    }, 0);
+
+   },
+  
+    
+  handleCancelEdit: function() 
+  {
+    state.editingTaskId = null; ui.render();
+  },
+
+  
+  handleSaveEdit: function(taskId) 
+  {
+    const input = document.getElementById(`edit-input-${taskId}`);
+    const newTitle = input.value.trim();
+    
+    if (newTitle === '') { alert('Task title cannot be empty'); return; }
+    
+    taskService.updateTask(taskId, { title: newTitle });
+    
+    state.editingTaskId = null;
+    ui.render();
+  },
 
 
 };
