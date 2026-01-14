@@ -57,27 +57,31 @@ const ui =
         return; }
 
         task_container.innerHTML = current_tasks.map(task => `
-  <div class="task-item ${task.status === 'completed' ? 'completed' : ''}">
-    <div class="task-content">
-      <div class="task-details">
-        <div class="task-title ${task.status === 'completed' ? 'completed' : ''}">
-          ${task.title}
-        </div>
+    <div class="task-item ${task.status === 'completed' ? 'completed' : ''}">
+        <div class="task-content">
+
+          <div class="task-details">
+
+           <div class="task-title ${task.status === 'completed' ? 'completed' : ''}">
+                     ${task.title}
+           </div>
         
-        <div class="task-meta">
-          <span class="priority-badge priority-${task.priority}">
-            ${task.priority}
-          </span>
+           <div class="task-meta">
+              <span class="priority-badge priority-${task.priority}">
+                  ${task.priority}
+              </span>
           
-          <span class="status-badge status-${task.status}">
-            ${task.status}
-          </span>
+              <span class="status-badge status-${task.status}">
+                  ${task.status}
+              </span>
           
-          <span class="task-date">
-            Created: ${utils.formatDate(task.createdAt)}
-          </span>
-        </div>
-      </div>
+             <span class="task-date">
+                  Created: ${utils.formatDate(task.createdAt)}
+             </span>
+           </div>
+           
+         </div>
+
     </div>
   </div>
 `).join('');
