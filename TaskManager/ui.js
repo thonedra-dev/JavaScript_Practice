@@ -70,9 +70,14 @@ const ui =
            </div>
         
            <div class="task-meta">
-              <span class="priority-badge priority-${task.priority}">
-                  ${task.priority}
-              </span>
+              <select class="priority-select priority-${task.priority}"
+                  onchange="app.handlePriorityChange('${task.id}', this.value)">
+
+                  <option value="low" ${task.priority === 'low' ? 'selected' : ''}>Low</option>
+                  <option value="medium" ${task.priority === 'medium' ? 'selected' : ''}>Medium</option>
+                  <option value="high" ${task.priority === 'high' ? 'selected' : ''}>High</option>
+
+              </select>
           
               <span class="status-badge status-${task.status}">
                   ${task.status}
