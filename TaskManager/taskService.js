@@ -39,6 +39,20 @@ const taskService =
         return current_filter;
     },
 
+
+    toogleStatus: function(id_from_app_js)
+    {
+       const finding_task_from_state = state.tasks.find(task=> task.id === id_from_app_js);
+
+       if(!finding_task_from_state) { return false; }
+
+       finding_task_from_state.status = finding_task_from_state.status === 'pending' ? 'completed' : 'pending';
+       finding_task_from_state.updatedAt = utils.getCurrentTimestamp();
+
+       state.save();
+       return true;
+    },
+
     getStats: function() 
      {
              return {
