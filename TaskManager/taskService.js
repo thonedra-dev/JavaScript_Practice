@@ -53,18 +53,6 @@ const taskService =
        return true;
     },
 
-    getStats: function() 
-     {
-             return {
-                  total: state.tasks.length,
-                  pending: state.tasks.filter(t => t.status === 'pending').length,
-                  completed: state.tasks.filter(t => t.status === 'completed').length,
-                  high: state.tasks.filter(t => t.priority === 'high').length,
-                  medium: state.tasks.filter(t => t.priority === 'medium').length,
-                  low: state.tasks.filter(t => t.priority === 'low').length  };
-     },
-
-    
      updateTask: function(id_from_app_js, updates) 
      {
         const searching_id = state.tasks.findIndex(task=> task.id === id_from_app_js);
@@ -92,5 +80,14 @@ const taskService =
        return false;
      },
 
-
+     getStats: function() 
+     {
+             return {
+                  total: state.tasks.length,
+                  pending: state.tasks.filter(t => t.status === 'pending').length,
+                  completed: state.tasks.filter(t => t.status === 'completed').length,
+                  high: state.tasks.filter(t => t.priority === 'high').length,
+                  medium: state.tasks.filter(t => t.priority === 'medium').length,
+                  low: state.tasks.filter(t => t.priority === 'low').length  };
+     }
 }
