@@ -51,8 +51,18 @@ document.getElementById('searchInput').addEventListener('input', (e) => {state.s
     
     // Refresh display
     ui.renderTasks();
+  },
+
+  handleToogleStatus: function(id_from_ui_js)    // We take the id, we call the method from ui.js to update it,
+  {                                              // and we reload the whole ui.js to be able to handle update info.
+    taskService.toogleStatus(id_from_ui_js);
+    ui.render();   
   }
+
+
 };
+
+  
 
 // Start the application when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
