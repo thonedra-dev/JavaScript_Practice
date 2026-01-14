@@ -32,31 +32,34 @@ document.getElementById('searchInput').addEventListener('input', (e) => {state.s
   
   handleAddTask: function() 
   {
+
     const titleInput = document.getElementById('newTaskTitle');
     const prioritySelect = document.getElementById('newTaskPriority');
     
     const title = titleInput.value;
     const priority = prioritySelect.value;
     
-    if (title.trim() === '') {
-      alert('Please enter a task title');
-      return;
-    }
+    if (title.trim() === '') { alert('Please enter a task title'); return; }
     
     taskService.addTask(title, priority);
     
-    // Clear input
-    titleInput.value = '';
-    prioritySelect.value = 'medium';
     
-    // Refresh display
-    ui.renderTasks();
+    titleInput.value = ''; prioritySelect.value = 'medium';  // Clear input
+    ui.renderTasks();       // Refresh display
+
   },
 
   handleToggleStatus: function(id_from_ui_js)    // We take the id, we call the method from ui.js to update it,
   {                                              // and we reload the whole ui.js to be able to handle update info.
     taskService.toggleStatus(id_from_ui_js);
     ui.render();   
+  },
+
+
+  handlePriorityChange: function(id_from_ui_js, newPriority)
+  {
+    taskService.updateTask(id_from_ui_js, { priority: newPriority }); 
+    ui.render();
   }
 
 
