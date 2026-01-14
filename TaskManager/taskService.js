@@ -40,7 +40,7 @@ const taskService =
     },
 
 
-    toogleStatus: function(id_from_app_js)
+    toggleStatus: function(id_from_app_js)
     {
        const finding_task_from_state = state.tasks.find(task=> task.id === id_from_app_js);
 
