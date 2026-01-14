@@ -79,7 +79,18 @@ const taskService =
         state.save();
         return true;
 
-     }
+     },
+
+     deleteTask: function(id_from_app_js) 
+     {
+       const initialLength = state.tasks.length;        // Getting the current length
+
+       state.tasks = state.tasks.filter(task => task.id !== id_from_app_js);    // Will take all except for this 'id_from_ui_js'
+    
+       if (state.tasks.length < initialLength) { state.save(); return true; }  // So, the length in state must be shorter than the initialLength
+    
+       return false;
+     },
 
 
 }
