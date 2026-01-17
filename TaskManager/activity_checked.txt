@@ -1,36 +1,32 @@
-One   : I have coded storage.js and state.js which are actually at the very end of the entire process. 
-Two   : In storage.js, I have coded functions only about saving and loading tasks as, I want to test only to add a task and fetching it automatically.
-Three : In taskService.js also, only cares about creating a task and saving it towards ==> state.js ==> storage.js to browser_storage.
-Four  : So, my ui.js can access the tasks directly from state object as I am not aiming any filteration yet.
-Five  : So, my index.html is only using the temporary div [  <div class="task-list-section"> ] for displaying the fetched tasks very straight-forwardly.
-Six   : Yep, my app.js is also only having the adding task towards taskService.js only
-
-! Need to modify app.js and ui.js alot add more on taskService.js for further development of the program.
-
-
-### Master Branch ###
-
-### Stage One ###
-
-I need to define the filtering_task() in taskService.js which is checking manually from states.
-Also, from ui.js, I need to fetch the data from that filtering_task() and fetch the rest piece of information.
-Actually the thing is that, when we add something, app.js receives the id from the index.html and 
-calls the function from taskSerivce very directly.
-But, when we want to fetch something, such as searching, filtering based on [ status, priority ], yep, app.js 
-still gets the id, but, update the state very immediately and calls the ui.render() which will call the function 
-from filtering_task() again and that is how the program is being circled.
+From Task Manager Project:
+✅ const/let/var - Variable declaration
+✅ Objects & Methods - Object literal syntax
+✅ State Management - Central state object
+✅ localStorage - Browser storage with JSON
+✅ Array Methods - filter, find, findIndex, map
+✅ DOM Manipulation - getElementById, innerHTML
+✅ Event Listeners - addEventListener, click/key events
+✅ Template Literals - Backticks for HTML strings
+✅ Error Handling - try/catch basics
+✅ Date/Time - Date object, timestamps
 
 
 Things must learn before the REACT framework
 
-- ES6 Modules (import/export) - React uses this exclusively
 
-- Promises & Async/Await - API calls in React
-
-- Array Methods especially reduce() - Redux/state management
-
-- Destructuring - heavily used in React props/state
-
-- Spread/Rest operators - React state updates
-
-- Event delegation - React's synthetic event system understanding
+New in Weather Dashboard Project:
+🆕 ES6 Modules - import/export between files
+🆕 Async/Await - Handling promises with async/await
+🆕 Fetch API - Making HTTP requests to external APIs
+🆕 Destructuring - Extracting object/array values
+🆕 Spread Operator - ... for arrays/objects
+🆕 Rest Parameters - ... in function parameters
+🆕 Array.reduce() - Reducing arrays to single values
+🆕 Optional Chaining - ?. for safe property access
+🆕 Event Delegation - Single listener for multiple elements
+🆕 Global Functions - window.toggleFavorite pattern
+🆕 Loading States - Showing/hiding loading indicators
+🆕 CSS Modules - External CSS with Font Awesome
+🆕 API Keys - External service authentication
+🆕 Temperature Units - Unit conversion logic
+🆕 Toast Notifications - Error message display system
